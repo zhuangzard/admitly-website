@@ -11,12 +11,8 @@ import {
   Settings, 
   Bell, 
   ChevronRight,
-  TrendingUp,
   Target,
   Clock,
-  Award,
-  Star,
-  Users,
   CheckCircle
 } from 'lucide-react';
 import { sampleSchools } from '@/lib/sampleData';
@@ -177,7 +173,7 @@ export default function DashboardPage() {
           <div className="flex justify-between items-center mb-8">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Welcome back, Sarah!</h1>
-              <p className="text-gray-600">Let's continue Emma's school search journey</p>
+              <p className="text-gray-600">Let&apos;s continue Emma&apos;s school search journey</p>
             </div>
             <div className="flex items-center gap-4">
               <button className="p-2 rounded-lg hover:bg-gray-100 relative">

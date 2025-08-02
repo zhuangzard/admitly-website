@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Check, ChevronRight, Users, Brain, Target, Trophy, BookOpen, Calendar, MessageSquare, Award } from 'lucide-react';
-import { processSteps } from '@/lib/sampleData';
 
 export default function HowItWorksPage() {
   const detailedSteps = [

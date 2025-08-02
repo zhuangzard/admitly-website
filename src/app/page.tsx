@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Star, Users, Award, ChevronRight, Play, Check } from 'lucide-react';
+import { Search, Star, ChevronRight, Play } from 'lucide-react';
 import { testimonials } from '@/lib/sampleData';
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
     {
       icon: "🔍",
       title: "Smart School Matching",
-      description: "AI analyzes 50+ factors to recommend perfect-fit schools based on your child's unique profile",
+      description: "AI analyzes 50+ factors to recommend perfect-fit schools based on your child&apos;s unique profile",
       color: "from-primary-100 to-primary-200"
     },
     {
@@ -54,7 +54,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Find Your Child's
+                Find Your Child&apos;s
                 <span className="text-primary-500 block">Perfect Private School</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -169,7 +169,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Four simple steps to find and get into your child's perfect private school
+              Four simple steps to find and get into your child&apos;s perfect private school
             </p>
           </div>
           
@@ -222,7 +222,7 @@ export default function Home() {
                     <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+                <p className="text-gray-700 mb-6 italic">&ldquo;{testimonial.content}&rdquo;</p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-bold mr-4">
                     {testimonial.avatar}

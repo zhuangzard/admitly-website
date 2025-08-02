@@ -17,7 +17,7 @@ export default function SchoolsPage() {
   const [showFilters, setShowFilters] = useState(false);
 
   const filteredSchools = useMemo(() => {
-    let filtered = sampleSchools.filter(school => {
+    const filtered = sampleSchools.filter(school => {
       // Search term filter
       if (filters.searchTerm) {
         const searchLower = filters.searchTerm.toLowerCase();
