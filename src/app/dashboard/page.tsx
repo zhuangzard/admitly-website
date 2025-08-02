@@ -13,7 +13,11 @@ import {
   ChevronRight,
   Target,
   Clock,
-  CheckCircle
+  CheckCircle,
+  Video,
+  BarChart3,
+  Users,
+  TrendingUp
 } from 'lucide-react';
 import { sampleSchools } from '@/lib/sampleData';
 
@@ -23,6 +27,9 @@ export default function DashboardPage() {
   const navigationItems = [
     { name: 'Overview', href: '#overview', icon: Home, id: 'overview' },
     { name: 'School Search', href: '/schools', icon: Search, id: 'search' },
+    { name: 'Student Tracking', href: '/student-tracking', icon: BarChart3, id: 'tracking' },
+    { name: 'Interview Prep', href: '/interview-prep', icon: Video, id: 'interview' },
+    { name: 'Marketplace', href: '/marketplace', icon: Users, id: 'marketplace' },
     { name: 'My Courses', href: '#courses', icon: BookOpen, id: 'courses' },
     { name: 'Calendar', href: '#calendar', icon: Calendar, id: 'calendar' },
     { name: 'Messages', href: '#messages', icon: MessageSquare, id: 'messages' },
@@ -132,10 +139,10 @@ export default function DashboardPage() {
             <nav className="space-y-2">
               {navigationItems.map((item) => {
                 const Icon = item.icon;
-                return (
+                return item.href.startsWith('#') ? (
                   <button
                     key={item.name}
-                    onClick={() => item.id !== 'search' && setActiveTab(item.id)}
+                    onClick={() => setActiveTab(item.id)}
                     className={`w-full flex items-center p-3 rounded-lg transition-colors ${
                       activeTab === item.id
                         ? 'bg-primary-100 text-primary-700'
@@ -150,6 +157,15 @@ export default function DashboardPage() {
                       </span>
                     )}
                   </button>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="w-full flex items-center p-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-100"
+                  >
+                    <Icon className="w-5 h-5 mr-3" />
+                    {item.name}
+                  </Link>
                 );
               })}
             </nav>
@@ -204,6 +220,27 @@ export default function DashboardPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* New Feature Highlights */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <Link href="/interview-prep" className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white hover:from-blue-600 hover:to-blue-700 transition-all">
+              <Video className="w-8 h-8 mb-3" />
+              <h3 className="text-lg font-bold mb-2">AI Interview Prep</h3>
+              <p className="text-blue-100 text-sm">Practice with school-specific questions and get AI feedback</p>
+            </Link>
+            
+            <Link href="/student-tracking" className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white hover:from-green-600 hover:to-green-700 transition-all">
+              <BarChart3 className="w-8 h-8 mb-3" />
+              <h3 className="text-lg font-bold mb-2">Student Tracking</h3>
+              <p className="text-green-100 text-sm">Monitor academic progress and quarterly reports</p>
+            </Link>
+            
+            <Link href="/marketplace" className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white hover:from-purple-600 hover:to-purple-700 transition-all">
+              <Users className="w-8 h-8 mb-3" />
+              <h3 className="text-lg font-bold mb-2">Teacher Marketplace</h3>
+              <p className="text-purple-100 text-sm">Connect with expert tutors and consultants</p>
+            </Link>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">

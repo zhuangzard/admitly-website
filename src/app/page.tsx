@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Star, ChevronRight, Play } from 'lucide-react';
+import { Search, Star, ChevronRight, Play, Video, BarChart3, Users } from 'lucide-react';
 import { testimonials } from '@/lib/sampleData';
 
 export default function Home() {
@@ -14,21 +14,31 @@ export default function Home() {
   const valueProps = [
     {
       icon: "🔍",
-      title: "Smart School Matching",
-      description: "AI analyzes 50+ factors to recommend perfect-fit schools based on your child&apos;s unique profile",
-      color: "from-primary-100 to-primary-200"
+      title: "AI School Matching",
+      description: "Smart algorithm analyzes 50+ factors to find schools that perfectly match your child's profile and family values",
+      color: "from-primary-100 to-primary-200",
+      link: "/schools"
     },
     {
-      icon: "🎯",
-      title: "Interview Mastery",
-      description: "School-specific practice with 10,000+ question database and personalized feedback",
-      color: "from-secondary-100 to-secondary-200"
+      icon: "🤖",
+      title: "AI Interview Training",
+      description: "Practice with school-specific questions and get real-time AI feedback on your interview responses",
+      color: "from-blue-100 to-blue-200",
+      link: "/interview-prep"
+    },
+    {
+      icon: "📊",
+      title: "Student Tracking",
+      description: "Long-term academic monitoring with quarterly reports and comprehensive college preparation planning",
+      color: "from-green-100 to-green-200",
+      link: "/student-tracking"
     },
     {
       icon: "👥",
-      title: "Expert Support",
-      description: "Access to former admissions officers and experienced consultants at a fraction of the cost",
-      color: "from-accent-100 to-accent-200"
+      title: "Expert Marketplace",
+      description: "Connect with verified tutors, consultants, and former admissions officers for personalized guidance",
+      color: "from-purple-100 to-purple-200",
+      link: "/marketplace"
     }
   ];
 
@@ -149,15 +159,19 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {valueProps.map((item, index) => (
-              <div key={index} className="text-center p-8 rounded-2xl border-2 border-gray-100 hover:border-primary-200 hover:shadow-lg transition-all group">
-                <div className={`w-20 h-20 bg-gradient-to-br ${item.color} rounded-2xl mx-auto mb-6 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform`}>
+              <Link key={index} href={item.link} className="text-center p-6 rounded-2xl border-2 border-gray-100 hover:border-primary-200 hover:shadow-lg transition-all group block">
+                <div className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl mx-auto mb-4 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
-              </div>
+                <h3 className="text-lg font-bold mb-3 text-gray-900">{item.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                <div className="mt-4 text-primary-500 font-medium text-sm flex items-center justify-center gap-1">
+                  Learn More
+                  <ChevronRight className="w-4 h-4" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
