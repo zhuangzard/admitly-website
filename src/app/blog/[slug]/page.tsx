@@ -2,6 +2,8 @@
 
 import { use } from 'react';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { ArrowLeft, Calendar, Clock, User, Tag, Share2, BookOpen, ChevronRight } from 'lucide-react';
 import { blogPosts, recentPosts } from '@/lib/blogData';
 
@@ -129,27 +131,32 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Article Content */}
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg prose-gray max-w-none">
-            <div 
-              className="article-content text-gray-700 leading-relaxed"
-              style={{
-                fontSize: '18px',
-                lineHeight: '1.8'
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              className="text-gray-700 leading-relaxed"
+              components={{
+                h1: ({children}) => <h1 className="text-4xl font-bold text-gray-900 mt-12 mb-8 leading-tight">{children}</h1>,
+                h2: ({children}) => <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6 leading-tight">{children}</h2>,
+                h3: ({children}) => <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4 leading-tight">{children}</h3>,
+                h4: ({children}) => <h4 className="text-xl font-bold text-gray-900 mt-8 mb-3 leading-tight">{children}</h4>,
+                p: ({children}) => <p className="mb-6 text-lg leading-relaxed text-gray-700">{children}</p>,
+                ul: ({children}) => <ul className="list-disc list-inside mb-6 ml-4 space-y-2">{children}</ul>,
+                ol: ({children}) => <ol className="list-decimal list-inside mb-6 ml-4 space-y-2">{children}</ol>,
+                li: ({children}) => <li className="mb-2 text-gray-700">{children}</li>,
+                strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                em: ({children}) => <em className="italic text-gray-700">{children}</em>,
+                blockquote: ({children}) => <blockquote className="border-l-4 border-primary-500 pl-6 my-6 italic text-gray-600 bg-gray-50 py-4 rounded-r-lg">{children}</blockquote>,
+                code: ({children}) => <code className="bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono">{children}</code>,
+                pre: ({children}) => <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6">{children}</pre>,
+                a: ({children, href}) => <a href={href} className="text-primary-500 hover:text-primary-600 underline font-medium">{children}</a>,
+                table: ({children}) => <div className="overflow-x-auto mb-6"><table className="w-full border-collapse border border-gray-300">{children}</table></div>,
+                th: ({children}) => <th className="border border-gray-300 bg-gray-50 px-4 py-2 text-left font-semibold">{children}</th>,
+                td: ({children}) => <td className="border border-gray-300 px-4 py-2">{children}</td>,
+                hr: () => <hr className="my-8 border-gray-300" />
               }}
-              dangerouslySetInnerHTML={{ 
-                __html: post.content
-                  .replace(/\n\n/g, '</p><p class="mb-6">')
-                  .replace(/\n/g, '<br>')
-                  .replace(/^/, '<p class="mb-6">')
-                  .replace(/$/, '</p>')
-                  .replace(/# (.*)/g, '<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">$1</h2>')
-                  .replace(/## (.*)/g, '<h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4">$1</h3>')
-                  .replace(/### (.*)/g, '<h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">$1</h4>')
-                  .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-gray-900">$1</strong>')
-                  .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-                  .replace(/- (.*)/g, '<li class="mb-2">$1</li>')
-                  .replace(/(<li.*<\/li>)/g, '<ul class="list-disc list-inside mb-6 ml-4">$1</ul>')
-              }}
-            />
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
 
           {/* Tags */}
