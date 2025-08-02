@@ -67,10 +67,16 @@ export default function Home() {
                 Find Your Child&apos;s
                 <span className="text-primary-500 block">Perfect Private School</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
                 AI-powered guidance at <strong>90% less cost</strong> than traditional consulting. 
                 Get personalized school matches, interview prep, and expert support.
               </p>
+              <div className="flex items-center gap-2 mb-8 text-gray-500">
+                <div className="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded flex items-center justify-center text-white font-bold text-xs">
+                  PEG
+                </div>
+                <span className="text-sm">A Primary Education Group Company</span>
+              </div>
               
               {/* Search Bar */}
               <div className="bg-white p-6 rounded-2xl shadow-lg mb-8">

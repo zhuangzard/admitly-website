@@ -117,11 +117,27 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
+        {/* Primary Education Group Section */}
         <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="text-center mb-6">
+            <div className="flex items-center justify-center mb-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-sm mr-3">
+                PEG
+              </div>
+              <span className="text-white font-semibold text-lg">Primary Education Group</span>
+            </div>
+            <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+              Admitly is a proud member of the Primary Education Group family, dedicated to revolutionizing 
+              K-12 education through innovative technology and comprehensive learning solutions.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Admitly. All rights reserved.
+              © 2024 Admitly, A Primary Education Group Company. All rights reserved.
             </div>
             <div className="flex space-x-6">
               {socialLinks.map((social) => {
