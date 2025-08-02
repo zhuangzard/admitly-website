@@ -131,10 +131,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Article Content */}
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg prose-gray max-w-none">
-            <ReactMarkdown 
-              remarkPlugins={[remarkGfm]}
-              className="text-gray-700 leading-relaxed"
-              components={{
+            <div className="text-gray-700 leading-relaxed">
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]}
+                components={{
                 h1: ({children}) => <h1 className="text-4xl font-bold text-gray-900 mt-12 mb-8 leading-tight">{children}</h1>,
                 h2: ({children}) => <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6 leading-tight">{children}</h2>,
                 h3: ({children}) => <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4 leading-tight">{children}</h3>,
@@ -154,9 +154,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 td: ({children}) => <td className="border border-gray-300 px-4 py-2">{children}</td>,
                 hr: () => <hr className="my-8 border-gray-300" />
               }}
-            >
-              {post.content}
-            </ReactMarkdown>
+              >
+                {post.content}
+              </ReactMarkdown>
+            </div>
           </div>
 
           {/* Tags */}
